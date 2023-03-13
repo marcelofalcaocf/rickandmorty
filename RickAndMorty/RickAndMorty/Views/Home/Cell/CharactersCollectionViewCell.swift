@@ -13,11 +13,6 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
     
     private lazy var cardView: UIView = {
         let view = UIView()
-        view.layer.shadowColor = UIColor(red: 42/255, green: 99/255, blue: 241/255, alpha: 1).cgColor
-        view.layer.shadowOffset = .zero
-        view.layer.shadowOpacity = 0.5
-        view.layer.shadowRadius = 4
-        view.layer.cornerRadius = 10
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -26,7 +21,7 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
         let view = UIImageView()
         view.clipsToBounds = true
         view.contentMode = .scaleAspectFill
-        view.image = UIImage(named: "Green-Hole")
+        view.image = UIImage(named: "rickTest")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -34,8 +29,8 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "teste"
-        label.textColor = .blue
-        label.font = .systemFont(ofSize: 12)
+        label.textColor = UIColor(red: 188/255, green: 255/255, blue: 76/255, alpha: 1)
+        label.font = UIFont(name: "Avenir", size: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -43,15 +38,15 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
     private lazy var ethnicGroupLabel: UILabel = {
         let label = UILabel()
         label.text = "teste"
-        label.textColor = .blue
-        label.font = .systemFont(ofSize: 10)
+        label.textColor = .white
+        label.font = UIFont(name: "Avenir", size: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = .black
         addSubViews()
         setupConstraints()
     }
@@ -60,6 +55,12 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
         layer.cornerRadius = 10
         layer.masksToBounds = true
+        layer.shadowColor = UIColor(red: 0/255, green: 255/255, blue: 10/255, alpha: 1).cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 2)
+        layer.shadowOpacity = 0.3
+        layer.shadowRadius = 4
+        layer.masksToBounds = false
+//
     }
     
     required init?(coder: NSCoder) {
@@ -94,7 +95,12 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
             ethnicGroupLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 6),
             ethnicGroupLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             ethnicGroupLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-            ethnicGroupLabel.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -12)
+            ethnicGroupLabel.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -12),
+            
+            cardView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            cardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            cardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            cardView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
     }
 }
