@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		14616AE029C0124E005783D9 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14616ADF29C0124E005783D9 /* HomeViewModelTests.swift */; };
+		14616AE829C0E22F005783D9 /* ViewCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14616AE729C0E22F005783D9 /* ViewCodable.swift */; };
 		14F6D8AD29BCBCEB00014632 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F6D8AC29BCBCEB00014632 /* AppDelegate.swift */; };
 		14F6D8AF29BCBCEB00014632 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F6D8AE29BCBCEB00014632 /* SceneDelegate.swift */; };
 		14F6D8B129BCBCEB00014632 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F6D8B029BCBCEB00014632 /* HomeViewController.swift */; };
@@ -28,7 +29,6 @@
 		14F6D8EB29BF608F00014632 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F6D8EA29BF608F00014632 /* HomeViewModel.swift */; };
 		14F6D8ED29BF64F800014632 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F6D8EC29BF64F800014632 /* ImageLoader.swift */; };
 		14F6D8EF29BF69A400014632 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F6D8EE29BF69A400014632 /* DetailViewModel.swift */; };
-		14F6D93029BF9CDF00014632 /* ViewCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F6D92F29BF9CDF00014632 /* ViewCodable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +44,7 @@
 /* Begin PBXFileReference section */
 		14616AD629C01194005783D9 /* RickAndMortyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14616ADF29C0124E005783D9 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		14616AE729C0E22F005783D9 /* ViewCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodable.swift; sourceTree = "<group>"; };
 		14F6D8A929BCBCEB00014632 /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F6D8AC29BCBCEB00014632 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14F6D8AE29BCBCEB00014632 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,7 +67,6 @@
 		14F6D8EA29BF608F00014632 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		14F6D8EC29BF64F800014632 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		14F6D8EE29BF69A400014632 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
-		14F6D92F29BF9CDF00014632 /* ViewCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewCodable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +93,14 @@
 				14616ADF29C0124E005783D9 /* HomeViewModelTests.swift */,
 			);
 			path = RickAndMortyTests;
+			sourceTree = "<group>";
+		};
+		14616AE629C0E21C005783D9 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				14616AE729C0E22F005783D9 /* ViewCodable.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		14F6D8A029BCBCEB00014632 = {
@@ -196,7 +204,7 @@
 		14F6D8C929BCCB2A00014632 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				14F6D92E29BF9CDF00014632 /* Protocols */,
+				14616AE629C0E21C005783D9 /* Protocol */,
 				14F6D8CA29BCCB4800014632 /* ImageInNavigation.swift */,
 				14F6D8D529BD209200014632 /* BackgroundImage.swift */,
 				14F6D8D729BD22A000014632 /* ButtonShadow.swift */,
@@ -228,15 +236,6 @@
 				14F6D8E829BF5F9C00014632 /* Constants.swift */,
 			);
 			path = Constants;
-			sourceTree = "<group>";
-		};
-		14F6D92E29BF9CDF00014632 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				14F6D92F29BF9CDF00014632 /* ViewCodable.swift */,
-			);
-			name = Protocols;
-			path = ../../../../adjuve_ios_new/Adjuve_Condomino/Adjuve_Condomino/Components/Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,8 +353,8 @@
 				14F6D8DD29BD247100014632 /* DetailScreen.swift in Sources */,
 				14F6D8DB29BD245E00014632 /* DetailViewController.swift in Sources */,
 				14F6D8CB29BCCB4800014632 /* ImageInNavigation.swift in Sources */,
-				14F6D93029BF9CDF00014632 /* ViewCodable.swift in Sources */,
 				14F6D8EB29BF608F00014632 /* HomeViewModel.swift in Sources */,
+				14616AE829C0E22F005783D9 /* ViewCodable.swift in Sources */,
 				14F6D8E629BF5DE200014632 /* InfoCharactersModel.swift in Sources */,
 				14F6D8ED29BF64F800014632 /* ImageLoader.swift in Sources */,
 				14F6D8C329BCC1EB00014632 /* HomeScreen.swift in Sources */,
