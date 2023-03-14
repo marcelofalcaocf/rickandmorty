@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		14616AD929C01194005783D9 /* RickAndMortyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14616AD829C01194005783D9 /* RickAndMortyTests.swift */; };
 		14616AE029C0124E005783D9 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14616ADF29C0124E005783D9 /* HomeViewModelTests.swift */; };
 		14F6D8AD29BCBCEB00014632 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F6D8AC29BCBCEB00014632 /* AppDelegate.swift */; };
 		14F6D8AF29BCBCEB00014632 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F6D8AE29BCBCEB00014632 /* SceneDelegate.swift */; };
@@ -44,7 +43,6 @@
 
 /* Begin PBXFileReference section */
 		14616AD629C01194005783D9 /* RickAndMortyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		14616AD829C01194005783D9 /* RickAndMortyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyTests.swift; sourceTree = "<group>"; };
 		14616ADF29C0124E005783D9 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		14F6D8A929BCBCEB00014632 /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F6D8AC29BCBCEB00014632 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 		14616AD729C01194005783D9 /* RickAndMortyTests */ = {
 			isa = PBXGroup;
 			children = (
-				14616AD829C01194005783D9 /* RickAndMortyTests.swift */,
 				14616ADF29C0124E005783D9 /* HomeViewModelTests.swift */,
 			);
 			path = RickAndMortyTests;
@@ -346,7 +343,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14616AD929C01194005783D9 /* RickAndMortyTests.swift in Sources */,
 				14616AE029C0124E005783D9 /* HomeViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

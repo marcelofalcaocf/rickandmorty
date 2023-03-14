@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol DetailViewControllerProtocol: AnyObject {
+    func actionBackView()
+}
+
 final class DetailViewController: UIViewController {
+    
+    var delegate: DetailViewControllerProtocol?
     
     private let viewModel: DetailViewModel
     lazy var viewScreen: DetailScreen = .init()
@@ -29,6 +35,10 @@ final class DetailViewController: UIViewController {
         addLogoToNavigationBarItem()
         configNavigationBar()
         viewScreen.updateElements(characters: viewModel.characters)
+        
+        UIView.animate(withDuration: 1.0) {
+            self.viewScreen.frame.origin.x += 100
+        }
     }
     
     private func configNavigationBar() {
@@ -44,6 +54,7 @@ final class DetailViewController: UIViewController {
     
     @objc func didTapBack() {
         navigationController?.popViewController(animated: true)
+        delegate?.actionBackView()
     }
 
     override func viewWillAppear(_ animated: Bool) {

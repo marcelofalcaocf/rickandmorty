@@ -90,6 +90,7 @@ final class DetailScreen: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
+        
     }
     
     public func updateElements(characters: CharacterModel) {
@@ -125,6 +126,11 @@ extension DetailScreen: ViewCodable {
         cardView.addSubview(stackView)
         addSubview(cardView)
         addSubview(profileImageView)
+        
+        UIView.animate(withDuration: 1.0) {
+            self.profileImageView.frame.origin.y -= 100
+            self.cardView.frame.origin.y += 100
+        }
     }
     
     func setupConstraints() {

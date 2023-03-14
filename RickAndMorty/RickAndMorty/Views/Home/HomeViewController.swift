@@ -51,6 +51,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc: DetailViewController = .init(characters: viewModel.configCellWithCharacters(position: indexPath.item))
+        vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -60,6 +61,14 @@ extension HomeViewController: HomeViewModelProtocol {
     func updateCharacters() {
         DispatchQueue.main.async {
             self.viewScreen.collectionView.reloadData()
+        }
+    }
+}
+
+extension HomeViewController: DetailViewControllerProtocol {
+    func actionBackView() {
+        UIView.animate(withDuration: 1.0) {
+            self.viewScreen.frame.origin.x -= 100
         }
     }
 }

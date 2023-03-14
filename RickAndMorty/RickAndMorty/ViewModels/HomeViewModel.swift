@@ -13,8 +13,8 @@ protocol HomeViewModelProtocol {
 
 final class HomeViewModel {
     
-    private var service: HomeServiceType = HomeService()
-    private var characters = [CharacterModel]()
+    var service: HomeServiceType = HomeService()
+    var characters = [CharacterModel]()
     var delegate: HomeViewModelProtocol?
     
     func receiveDate() {
