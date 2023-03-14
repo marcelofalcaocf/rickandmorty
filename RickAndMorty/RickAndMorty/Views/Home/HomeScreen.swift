@@ -23,9 +23,7 @@ final class HomeScreen: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addBackground(named: "Background-2")
-        addSubViews()
-        setupConstraints()
+        setupView()
     }
     
     public func configProtocolsCollectionView(delegate: UICollectionViewDelegate, dataSouce: UICollectionViewDataSource) {
@@ -37,11 +35,20 @@ final class HomeScreen: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func addSubViews() {
+
+
+}
+
+extension HomeScreen: ViewCodable {
+    func setupConfigurations() {
+        addBackground(named: "Background-2")
+    }
+    
+    func setupHierarchy() {
         addSubview(collectionView)
     }
     
-    private func setupConstraints() {
+    func setupConstraints() {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: topAnchor, constant: 114),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),

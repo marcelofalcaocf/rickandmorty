@@ -9,7 +9,15 @@ import UIKit
 
 final class DetailViewController: UIViewController {
     
+    private let viewModel: DetailViewModel
     lazy var viewScreen: DetailScreen = .init()
+    
+    init(characters: CharacterModel) {
+        self.viewModel = DetailViewModel(characters: characters)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) { nil }
     
     override func loadView() {
         self.view = viewScreen
@@ -19,7 +27,11 @@ final class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         addLogoToNavigationBarItem()
-        
+        configNavigationBar()
+        viewScreen.updateElements(characters: viewModel.characters)
+    }
+    
+    private func configNavigationBar() {
         let backButton = UIBarButtonItem(
             image: UIImage(named: "arrowBlack"),
             style: .plain,
@@ -37,16 +49,5 @@ final class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

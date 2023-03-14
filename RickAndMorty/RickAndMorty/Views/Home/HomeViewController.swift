@@ -8,7 +8,8 @@
 import UIKit
 
 final class HomeViewController: UIViewController {
-
+    
+    private let viewModel = HomeViewModel()
     lazy var viewScreen: HomeScreen = .init()
     
     override func loadView() {
@@ -19,6 +20,9 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         addLogoToNavigationBarItem()
         viewScreen.configProtocolsCollectionView(delegate: self, dataSouce: self)
+        
+        viewModel.receiveDate()
+        viewModel.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,11 +33,12 @@ final class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 14
+        return viewModel.charactersCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharactersCollectionViewCell.identifier, for: indexPath) as? CharactersCollectionViewCell {
+            cell.setupCell(characters: viewModel.configCellWithCharacters(position: indexPath.item))
             return cell
         }
         
@@ -45,8 +50,16 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc: DetailViewController = .init()
-        navigationController?.pushViewController(vc, animated: false)
+        let vc: DetailViewController = .init(characters: viewModel.configCellWithCharacters(position: indexPath.item))
+        navigationController?.pushViewController(vc, animated: true)
         
+    }
+}
+
+extension HomeViewController: HomeViewModelProtocol {
+    func updateCharacters() {
+        DispatchQueue.main.async {
+            self.viewScreen.collectionView.reloadData()
+        }
     }
 }

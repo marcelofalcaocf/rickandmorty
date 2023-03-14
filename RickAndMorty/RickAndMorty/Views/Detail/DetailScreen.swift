@@ -12,7 +12,6 @@ final class DetailScreen: UIView {
     private lazy var profileImageView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.image = UIImage(named: "rickTest")
         view.clipsToBounds = true
         view.layer.borderWidth = 4
         view.layer.borderColor = UIColor(red: 3/255, green: 96/255, blue: 11/255, alpha: 1).cgColor
@@ -28,7 +27,7 @@ final class DetailScreen: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.shadowColor = UIColor(red: 0/255, green: 255/255, blue: 10/255, alpha: 1).cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: 2)
-        view.layer.shadowOpacity = 0.3
+        view.layer.shadowOpacity = 0.15
         view.layer.shadowRadius = 4
         view.layer.masksToBounds = false
         return view
@@ -37,7 +36,6 @@ final class DetailScreen: UIView {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(red: 188/255, green: 255/255, blue: 76/255, alpha: 1)
-        label.text = "Rick Sanchez"
         label.textAlignment = .center
         label.font = UIFont(name: "Avenir", size: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -47,7 +45,6 @@ final class DetailScreen: UIView {
     private lazy var genderLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.text = "gender: MALE"
         label.textAlignment = .center
         label.font = UIFont(name: "Avenir", size: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -57,7 +54,6 @@ final class DetailScreen: UIView {
     private lazy var speciesLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.text = "species: HUMAN"
         label.textAlignment = .center
         label.font = UIFont(name: "Avenir", size: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -67,7 +63,7 @@ final class DetailScreen: UIView {
     private lazy var statusLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.text = "status: ALIVE"
+//        label.text = "status: ALIVE"
         label.textAlignment = .center
         label.font = UIFont(name: "Avenir", size: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -77,7 +73,6 @@ final class DetailScreen: UIView {
     private lazy var createdLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.text = "created: 11/04/2017"
         label.textAlignment = .center
         label.font = UIFont(name: "Avenir", size: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -94,24 +89,45 @@ final class DetailScreen: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addBackground(named: "Background-4")
-        addSubsView()
-        setupConstraints()
+        setupView()
     }
     
-    private func addSubsView() {
-        cardView.addSubview(nameLabel)
-        cardView.addSubview(stackView)
-        addSubview(cardView)
-        addSubview(profileImageView)
+    public func updateElements(characters: CharacterModel) {
+        nameLabel.text = characters.name
+        profileImageView.from(url: characters.image)
+        genderLabel.text = "gender \(characters.gender)"
+        speciesLabel.text = "species \(characters.species)"
+        statusLabel.text = "status: \(characters.status)"
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
 
+        if let date = dateFormatter.date(from: "2017-11-04T19:50:28.250Z") {
+            dateFormatter.dateFormat = "yyyy/MM/dd"
+            let formattedDate = dateFormatter.string(from: date)
+            createdLabel.text = "created: \(formattedDate)"
+        }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupConstraints() {
+}
+
+extension DetailScreen: ViewCodable {
+    func setupConfigurations() {
+        addBackground(named: "Background-4")
+    }
+    
+    func setupHierarchy() {
+        cardView.addSubview(nameLabel)
+        cardView.addSubview(stackView)
+        addSubview(cardView)
+        addSubview(profileImageView)
+    }
+    
+    func setupConstraints() {
         NSLayoutConstraint.activate([
             cardView.centerXAnchor.constraint(equalTo: centerXAnchor),
             cardView.centerYAnchor.constraint(equalTo: centerYAnchor),

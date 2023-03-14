@@ -21,14 +21,12 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
         let view = UIImageView()
         view.clipsToBounds = true
         view.contentMode = .scaleAspectFill
-        view.image = UIImage(named: "rickTest")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "teste"
         label.textColor = UIColor(red: 188/255, green: 255/255, blue: 76/255, alpha: 1)
         label.font = UIFont(name: "Avenir", size: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -37,18 +35,30 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
     
     private lazy var ethnicGroupLabel: UILabel = {
         let label = UILabel()
-        label.text = "teste"
         label.textColor = .white
         label.font = UIFont(name: "Avenir", size: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
+    override func prepareForReuse() {
+        photoView.image = nil
+        titleLabel.text = nil
+        ethnicGroupLabel.text = nil
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .black
         addSubViews()
         setupConstraints()
+    }
+    
+    private func addSubViews() {
+        cardView.addSubview(photoView)
+        cardView.addSubview(titleLabel)
+        cardView.addSubview(ethnicGroupLabel)
+        contentView.addSubview(cardView)
     }
     
     override func layoutSubviews() {
@@ -60,24 +70,16 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
         layer.shadowOpacity = 0.3
         layer.shadowRadius = 4
         layer.masksToBounds = false
-//
+    }
+    
+    func setupCell(characters: CharacterModel) {
+        titleLabel.text = characters.name
+        ethnicGroupLabel.text = characters.species
+        photoView.from(url: characters.image)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func prepareForReuse() {
-        photoView.image = nil
-        titleLabel.text = nil
-        ethnicGroupLabel.text = nil
-    }
-    
-    private func addSubViews() {
-        cardView.addSubview(photoView)
-        cardView.addSubview(titleLabel)
-        cardView.addSubview(ethnicGroupLabel)
-        contentView.addSubview(cardView)
     }
     
     private func setupConstraints() {
