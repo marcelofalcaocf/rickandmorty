@@ -70,6 +70,8 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
         layer.shadowOpacity = 0.3
         layer.shadowRadius = 4
         layer.masksToBounds = false
+        contentView.layer.cornerRadius = 10
+        contentView.layer.masksToBounds = true
     }
     
     func setupCell(characters: CharacterModel) {
